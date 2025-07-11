@@ -3,14 +3,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    color: #333;
+    color: #eee; /* Light gray text for better contrast on dark background */
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: column; /* To allow header at top and content below */
+    justify-content: flex-start; /* Align content from the top */
+    align-items: center; /* Center horizontally */
     box-sizing: border-box;
-    background: linear-gradient(to bottom right, #55ffff, #ffaa00);
+    /* Darker background with your theme colors */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Semi-transparent black overlay */
+                linear-gradient(to bottom right, #55ffff, #ffaa00);    /* Your original vibrant gradient */
 }
 
 /* --- Navigation Bar (Menu) Styles --- */
@@ -35,10 +37,10 @@ body {
 
 .logo {
     font-family: 'Press Start 2P', cursive;
-    color: #55ffff;
+    color: #55ffff; /* Your theme blue */
     font-size: 1.5em;
     text-decoration: none;
-    text-shadow: 1px 1px #ffaa00;
+    text-shadow: 1px 1px #ffaa00; /* Your theme orange */
 }
 
 .nav-links {
@@ -53,7 +55,7 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: white; /* White text for menu items */
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
@@ -62,7 +64,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: #ffaa00;
+    color: #ffaa00; /* Your theme orange on hover */
     text-shadow: 0 0 5px #ffaa00;
 }
 
@@ -79,7 +81,7 @@ body {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: white;
+    background-color: white; /* White lines for hamburger */
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -93,56 +95,97 @@ body {
 .content-wrapper {
     flex-grow: 1; /* Allows content to take available space */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically relative to content-wrapper height */
     width: 100%;
+    padding: 20px 0; /* Add some vertical padding around the container */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.95);
-    margin: 20px;
+    background-color: #222222; /* Light black-gray for the main content frame */
+    margin: 20px; /* Margin around the box for smaller screens */
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    width: 90%;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger, darker shadow */
+    max-width: 800px; /* Max width for larger screens */
+    width: 90%; /* Responsive width */
     text-align: center;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensure padding doesn't push width over */
+
+    /* Initial state for page load animation */
+    opacity: 0;
+    transform: translateY(30px); /* Start below */
+    /* Animation will be applied by JS by adding .animate-on-load class */
 }
 
+/* Page Load Animation for the main container */
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.container.animate-on-load {
+    animation: fadeInContainer 1s ease-out forwards; /* 1 second duration */
+}
+
+
+/* H1 specific animation (appears from top) */
+@keyframes fadeInDownTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Start slightly above */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 h1 {
-    font-family: 'Press Start 2P', cursive;
-    color: #ffaa00;
-    font-size: 2.2em;
+    font-family: 'Press Start 2P', cursive; /* Pixelated font for title */
+    color: #ffaa00; /* Your theme orange */
+    font-size: 2.2em; /* Larger on PC */
     margin-bottom: 15px;
-    text-shadow: 2px 2px #333;
+    text-shadow: 2px 2px #55ffff; /* Light blue text shadow for retro feel */
+
+    /* Apply animation directly to h1 (it plays once when rendered) */
+    opacity: 0; /* Hidden initially */
+    transform: translateY(-20px); /* Start above */
+    animation: fadeInDownTitle 0.8s ease-out 0.3s forwards; /* 0.8s duration, 0.3s delay */
 }
 
 h2 {
     font-family: 'Press Start 2P', cursive;
-    color: #55ffff;
+    color: #55ffff; /* Your theme blue */
     font-size: 1.5em;
     margin-top: 25px;
     margin-bottom: 10px;
+    text-shadow: 1px 1px #ffaa00; /* Orange text shadow for pop */
 }
 
 p {
     font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 10px;
+    /* Color inherited from body: #eee */
 }
 
 .server-section {
-    background-color: #f9f9f9;
+    background-color: #333333; /* Darker background for this specific section */
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid #eee;
+    border: 1px solid #444; /* Darker border */
     margin-top: 25px;
 }
 
 .server-name {
     font-family: 'Press Start 2P', cursive;
-    color: #ffaa00;
+    color: #ffaa00; /* Your theme orange */
     font-size: 1.8em;
     margin-bottom: 10px;
 }
@@ -150,121 +193,125 @@ p {
 .ip-address {
     font-size: 1.8em;
     font-weight: bold;
-    color: #007bff;
-    background-color: #e6e6e6;
+    color: #55ffff; /* Your theme blue for IP to stand out */
+    background-color: #444444; /* Darker background for IP block */
     padding: 10px 15px;
     border-radius: 5px;
     display: inline-block;
-    cursor: pointer;
+    cursor: pointer; /* Indicate it's clickable/copyable */
     transition: background-color 0.3s ease;
 }
 
 .ip-address:hover {
-    background-color: #dcdcdc;
+    background-color: #555555; /* Slightly lighter on hover */
 }
 
 .copy-message {
     font-size: 0.9em;
-    color: #888;
+    color: #aaaaaa; /* Lighter color for copy message */
     margin-top: 5px;
-    opacity: 0;
+    opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease;
 }
 
 .copy-message.show {
-    opacity: 1;
+    opacity: 1; /* Show when active */
 }
 
 ul {
-    list-style: none;
+    list-style: none; /* Remove bullet points */
     padding: 0;
     margin-top: 15px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: center; /* Center list items */
+    gap: 10px; /* Space between list items */
 }
 
 li {
-    background-color: #e0e0e0;
+    background-color: #444444; /* Darker background for list items */
+    color: #eee; /* Ensure list item text is light */
     padding: 8px 15px;
     border-radius: 5px;
     font-size: 1em;
 }
 
 .button {
-    background-color: #55ffff;
-    color: #333;
+    background-color: #55ffff; /* Your new theme color */
+    color: #333; /* Dark text for contrast against light button */
     padding: 12px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 1.1em;
-    margin: 15px 10px;
+    margin: 15px 10px; /* More margin for buttons */
     cursor: pointer;
     border-radius: 8px;
     border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
 .button:hover {
-    background-color: #ffaa00;
-    color: white;
-    transform: translateY(-2px);
+    background-color: #ffaa00; /* Hover color */
+    color: white; /* White text on hover for contrast */
+    transform: translateY(-2px); /* Slight lift effect */
 }
 
 /* Footer */
 footer {
     margin-top: 30px;
     font-size: 0.9em;
-    color: #666;
-    padding-bottom: 20px;
+    color: #aaaaaa; /* Lighter color for footer text */
+    padding-bottom: 20px; /* Add some padding at the bottom */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     /* Navbar adjustments for mobile */
     .nav-container {
-        padding: 0 15px;
+        padding: 0 15px; /* Adjust padding */
     }
 
     .nav-links {
-        display: none;
-        flex-direction: column;
+        display: none; /* Hide horizontal menu on mobile */
+        flex-direction: column; /* Stack vertically when shown */
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.9); /* Darker background for mobile menu */
         position: absolute;
-        top: 60px;
+        top: 60px; /* Below the navbar */
         left: 0;
         padding: 10px 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex; /* Show menu when active */
     }
 
     .nav-links li {
-        margin: 0;
+        margin: 0; /* Remove horizontal margin */
         text-align: center;
-        width: 100%;
+        width: 100%; /* Full width for list items */
     }
 
     .nav-links a {
-        display: block;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block; /* Make links block-level for full-width click area */
+        padding: 12px 0; /* Larger click area */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
     }
 
     .nav-links li:last-child a {
-        border-bottom: none;
+        border-bottom: none; /* No separator for last item */
     }
 
     .menu-toggle {
-        display: flex;
+        display: flex; /* Show hamburger icon on mobile */
     }
 
     /* Content adjustments */
+    .content-wrapper {
+        padding: 10px 0; /* Less padding on mobile */
+    }
     h1 {
         font-size: 1.8em;
     }
@@ -305,5 +352,68 @@ footer {
     }
     .logo {
         font-size: 1.2em;
+    }
+}
+/* --- Styling for the new image below H1 --- */
+.hero-image {
+    max-width: 100%; /* Ensures the image is never wider than its container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes extra space below image */
+    margin: 20px auto 30px auto; /* Centers the image and adds vertical spacing */
+    border-radius: 8px; /* Optional: adds rounded corners to the image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow */
+}
+/* --- Media Gallery Styles --- */
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for videos */
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.video-item iframe { /* Changed back to iframe */
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio for videos */
+    display: block; /* Remove extra space below iframe */
+    border-radius: 8px; /* Apply border-radius to the iframe itself */
+}
+
+.video-item p {
+    font-size: 0.95em;
+    color: #aaaaaa;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for images */
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Crop images to fit without distortion */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+/* Responsive adjustments for media galleries */
+@media (max-width: 768px) {
+    .video-gallery, .image-gallery {
+        grid-template-columns: 1fr; /* Stack items on small screens */
+        gap: 15px;
+    }
+    .image-gallery img {
+        height: auto; /* Allow images to scale height on mobile */
     }
 }
