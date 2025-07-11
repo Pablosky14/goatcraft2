@@ -12,44 +12,54 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- JavaScript for Copy IP Address ---
-document.getElementById('serverIp').addEventListener('click', function() {
-    const ip = this.textContent.trim(); // Get the IP text
-    navigator.clipboard.writeText(ip).then(() => {
-        // On successful copy, show the message
-        const message = document.getElementById('copyMessage');
-        message.classList.add('show');
-        // Hide the message after 1.5 seconds
-        setTimeout(() => {
-            message.classList.remove('show');
-        }, 1500);
-    }).catch(err => {
-        // Log any errors during copy
-        console.error('Error al copiar el texto: ', err);
-        // Optionally, alert the user if copy failed
-        alert('No se pudo copiar la IP automáticamente. Por favor, cópiala manualmente: ' + ip);
+// --- JavaScript for Copy IP Address (with safety check) ---
+// Get the element first
+const serverIpElement = document.getElementById('serverIp'); 
+
+// ONLY add the event listener if the element actually exists on this page
+if (serverIpElement) {
+    serverIpElement.addEventListener('click', function() {
+        const ip = this.textContent.trim(); // Get the IP text
+        navigator.clipboard.writeText(ip).then(() => {
+            // On successful copy, show the message
+            const message = document.getElementById('copyMessage');
+            if (message) { // Also check if copyMessage element exists
+                message.classList.add('show');
+                // Hide the message after 1.5 seconds
+                setTimeout(() => {
+                    message.classList.remove('show');
+                }, 1500);
+            }
+        }).catch(err => {
+            // Log any errors during copy
+            console.error('Error al copiar el texto: ', err);
+            // Optionally, alert the user if copy failed
+            alert('No se pudo copiar la IP automáticamente. Por favor, cópiala manualmente: ' + ip);
+        });
     });
-});
+}
 
 
 // --- JavaScript for Mobile Menu Toggle ---
 const mobileMenu = document.getElementById('mobile-menu'); // The hamburger icon
 const navLinksMenu = document.getElementById('nav-links-menu'); // The navigation links list
 
-// Add click event listener to the hamburger icon
-mobileMenu.addEventListener('click', () => {
-    // Toggle the 'active' class on both the hamburger icon and the nav links
-    // This will trigger the CSS transitions for opening/closing the menu
-    mobileMenu.classList.toggle('active');
-    navLinksMenu.classList.toggle('active');
-});
-
-// Close mobile menu when a navigation link is clicked
-// This is especially useful for single-page sites, but good practice for multi-page too.
-navLinksMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        // Remove the 'active' class from both elements, closing the menu
-        mobileMenu.classList.remove('active');
-        navLinksMenu.classList.remove('active');
+// Add click event listener to the hamburger icon ONLY if both elements exist
+if (mobileMenu && navLinksMenu) {
+    mobileMenu.addEventListener('click', () => {
+        // Toggle the 'active' class on both the hamburger icon and the nav links
+        // This will trigger the CSS transitions for opening/closing the menu
+        mobileMenu.classList.toggle('active');
+        navLinksMenu.classList.toggle('active');
     });
-});
+
+    // Close mobile menu when a navigation link is clicked
+    // This is especially useful for single-page sites, but good practice for multi-page too.
+    navLinksMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove the 'active' class from both elements, closing the menu
+            mobileMenu.classList.remove('active');
+            navLinksMenu.classList.remove('active');
+        });
+    });
+}
