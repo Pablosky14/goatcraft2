@@ -63,3 +63,45 @@ if (mobileMenu && navLinksMenu) {
         });
     });
 }
+
+// --- Lightbox Functionality ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
+const galleryImages = document.querySelectorAll('.image-gallery img');
+
+// Add click listener to each image in the gallery
+galleryImages.forEach(image => {
+    image.addEventListener('click', () => {
+        // Set the clicked image's source to the lightbox image
+        lightboxImg.src = image.src;
+        // Add 'active' class to show the lightbox
+        lightbox.classList.add('active');
+        // Prevent body scrolling when lightbox is open
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Add click listener to the close button
+lightboxCloseBtn.addEventListener('click', () => {
+    // Remove 'active' class to hide the lightbox
+    lightbox.classList.remove('active');
+    // Re-enable body scrolling
+    document.body.style.overflow = 'auto';
+});
+
+// Optional: Close lightbox when clicking outside the image content
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) { // Check if the click was directly on the overlay
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Optional: Close lightbox with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
