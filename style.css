@@ -650,3 +650,9 @@ footer {
         padding-right: 40px;
     }
 }
+.image-quality-text {
+  text-align: center;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: rgb(120, 120, 120)
+}
