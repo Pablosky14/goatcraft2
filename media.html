@@ -23,6 +23,7 @@
             </div>
             <ul class="nav-links" id="nav-links-menu">
                 <li><a href="index.html">Inicio</a></li>
+                <li><a href="hall.html">Ayuntamiento</a></li>
                 <li><a href="server.html">Servidor</a></li>
                 <li><a href="features.html">Características</a></li>
                 <li><a href="rules.html">Reglas</a></li>
@@ -75,15 +76,15 @@
             <h2 style="color: #55ffff;">Galería de Capturas</h2>
             <p>Desde monumentos hasta errores del juego, haz clic en las imágenes para ampliarlas.</p>
                 <div class="image-gallery">
-                    <img src="images/sara1.jpg" alt="GoatCraft Screenshot 1" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
-                    <img src="images/pau1.png" alt="GoatCraft Screenshot 2" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
-                    <img src="images/sephirot2.png" alt="GoatCraft Screenshot 3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
-                    <img src="images/sephirot3.png" alt="GoatCraft Screenshot 4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
-                    <img src="images/sephirot1.png" alt="GoatCraft Screenshot 4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
-                    <img src="images/disfuncion.png" alt="GoatCraft Screenshot 5" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
-                    <img src="images/" alt="GoatCraft Screenshot 6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
-                    <img src="images/" alt="GoatCraft Screenshot 7" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
-                    <img src="images/" alt="GoatCraft Screenshot 8" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
+                    <img src="images/sara1.jpg" alt="Primer monumento encontrado" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
+                    <img src="images/pau1.png" alt="Segundo monumento encontrado" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
+                    <img src="images/sephirot2.png" alt="Vaya..." onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
+                    <img src="images/sephirot3.png" alt="No queda tan mal" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
+                    <img src="images/sephirot1.png" alt="Generacion de mundo ecológica" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/55ffff?text=Vacio';" loading="lazy">
+                    <img src="images/disfuncion.png" alt="La foto de perfil del dios cabra" onerror="this.onerror=null;this.src='https://placehold.co/600x400/222222/ffaa00?text=Vacio';" loading="lazy">
+                    <img src="https://placehold.co/600x400/222222/55ffff?text=Vacio6" alt="GoatCraft Screenshot 6" loading="lazy">
+                    <img src="https://placehold.co/600x400/222222/ffaa00?text=Vacio7" alt="GoatCraft Screenshot 7" loading="lazy">
+                    <img src="https://placehold.co/600x400/222222/55ffff?text=Vacio8" alt="GoatCraft Screenshot 8" loading="lazy">
                 </div>
             <a href="index.html" class="button">Volver al Inicio</a>
 
@@ -95,7 +96,10 @@
 
     <div id="lightbox" class="lightbox-overlay">
         <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="Imagen Ampliada">
+            <button id="lightbox-prev-btn" class="lightbox-nav-button">&lt;</button> <!-- Previous button -->
+            <img id="lightbox-img" src="" alt="">
+            <button id="lightbox-next-btn" class="lightbox-nav-button">&gt;</button> <!-- Next button -->
+            <p id="lightbox-text"></p>
             <button id="lightbox-close-btn" class="lightbox-button">Volver Atrás</button>
         </div>
     </div>
