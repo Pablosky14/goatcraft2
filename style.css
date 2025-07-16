@@ -15,7 +15,7 @@ body {
 
 .navbar {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #1a1a1a;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     position: sticky;
@@ -259,7 +259,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: #1a1a1a;
         position: absolute;
         top: 60px;
         left: 0;
@@ -346,7 +346,7 @@ footer {
 }
 .video-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fR));
     gap: 20px;
     margin-top: 30px;
     margin-bottom: 40px;
